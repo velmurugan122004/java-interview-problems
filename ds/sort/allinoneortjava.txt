@@ -1,0 +1,95 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    int arr1[]={5,3,4,1,2};
+	    insertion(arr1);
+            System.out.println("INSERTION SORT : "Arrays.toString(arr1));
+            int arr2[]={2,1,4,3,5};
+	    selection(arr2);
+            System.out.println("SELECTION SORT : "Arrays.toString(arr2));
+            int arr3[]={4,2,3,5,1};
+	    bubble(arr3);
+            System.out.println("BUBBLE SORT : "+Arrays.toString(arr3));
+	}
+	
+	public static void insertion(int []arr)
+	{
+	    for(int i=0;i<arr.length-1;i++)
+	    {
+	        for(int j=i+1;j>0;j--)
+	        {
+	            if(arr[j]<arr[j-1])
+	            {
+	                swap(arr,j,j-1);
+	            }
+	            else{
+	                break;
+	            }
+	        }
+	    }
+	}
+	
+	//--------------------------------------------------------------------------------------------------------	
+	
+	public static void selection(int arr[])
+	{
+	    int maxindex,last;
+	    for(int i=0;i<arr.length;i++)
+	    {
+	        last=arr.length-i-1;
+	        maxindex=max(arr,0,last);
+	        swap(arr,maxindex,last);
+	    }
+	    
+	}
+	
+	//--------------------------------------------------------------------------------------------------------
+	
+	public static void bubble(int arr[])
+	{
+	    boolean ch=false;
+	    for(int i=0;i<arr.length;i++)
+	    {
+	        for(int j=1;j<arr.length-i;j++)
+	        {
+	            if(arr[j]<arr[j-1])
+	            {
+	                swap(arr,j,j-1);
+	                ch=true;
+	            }
+	        }
+	        if(!ch)
+	        {
+	            break;
+	        }
+	    }
+	}
+	
+	//--------------------------------------------------------------------------------------------------------
+	
+	public static void swap(int [] arr,int i,int j)
+	{
+	    int temp=arr[i];
+	    arr[i]=arr[j];
+	    arr[j]=temp;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------	
+	
+	public static int max(int arr[],int s,int e)
+	{
+	    int max1=s;
+	    for(int i=s;i<=e;i++)
+	    {
+	        if(arr[max1]<arr[i])
+	        {
+	            max1=i;
+	        }
+	    }
+	    return max1;
+	}
+}
+
+
+
